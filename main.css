@@ -1,0 +1,329 @@
+/* video::-webkit-media-controls {
+    display: none;
+}
+p{
+    color: red;
+}
+video::-webkit-media-controls-fullscreen-button, video::-webkit-media-controls-play-button, video::-webkit-media-controls-pausebutton {
+    display: none;
+}
+video{
+    height: 450px;
+    width: 100%;
+} */
+
+* {
+	margin: 0; 
+	padding: 0;
+}
+body {
+    background: url(assets/table.jpg) no-repeat center center;
+    background-size: cover;
+	font-family: arial, verdana, tahoma;
+}
+
+/*Time to apply widths for accordian to work
+Width of image = 640px
+total images = 5
+so width of hovered image = 640px
+width of un-hovered image = 40px - you can set this to anything
+so total container width = 640 + 40*4 = 800px;
+default width = 800/5 = 160px;
+*/
+
+.accordian {
+    width: 1205px; 
+    height: 550px;
+	overflow: hidden;
+	/*Time for some styling*/
+	margin: 100px auto;
+	
+}
+
+/*A small hack to prevent flickering on some browsers*/
+.accordian ul {
+	width: 2000px;
+	/*This will give ample space to the last item to move
+    instead of falling down/flickering during hovers.*/
+    
+}
+
+.accordian li {
+	position: relative;
+	display: block;
+	width: 240px;
+	float: left;
+    
+	
+	/*Transitions to give animation effect*/
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	/*If you hover on the images now you should be able to 
+	see the basic accordian*/
+}
+
+/*Reduce with of un-hovered elements*/
+.accordian ul:hover li {
+    width: 100px;
+}
+/*Lets apply hover effects now*/
+/*The LI hover style should override the UL hover style*/
+.accordian ul li:hover {
+    width: 800px;
+}
+
+
+
+.accordian li img {
+	display: block;
+}
+
+/* My code */
+
+.general{
+    background: white;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    width: 800px;
+    z-index: 2;
+    left: 59px;
+}
+.first{
+    background:url('assets/wall.jpg') no-repeat center center;
+    background-size: cover;
+    border: 30px solid #767851;
+}
+.second{
+    background:url('assets/wall.jpg') no-repeat center center;
+    background-size: cover;
+    border: 30px solid red;
+}
+.third{
+    background:url('assets/wall.jpg') no-repeat center center;
+    background-size: cover;
+    border: 30px solid black;
+}
+.fourth{
+    background:url('assets/wall.jpg') no-repeat center center;
+    background-size: cover;
+    border: 30px solid #089F59;
+}
+.fifth{
+    background:url('assets/wall.jpg') no-repeat center center;
+    background-size: cover;
+    border: 30px solid sandybrown;
+}
+
+.accordian li img {
+    display: block;
+position: relative;
+z-index: 5;
+height: 325px;
+top: 110px;
+right: 45px;
+}
+.gone{
+    display: none;
+}
+.sheep{
+    color: sandybrown;
+    height: 550px;
+    position: absolute !important;
+    z-index: 2;
+    background: #767851;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.box{
+    width: 400px;
+background: black;
+color: white;
+padding: 50px;
+left: 5px;
+position: relative;
+bottom: 25px;
+opacity: 0.7;
+}
+
+/* Estilos para menu */
+
+
+:root {
+    --screen-width: 100%;
+    --screen-height: 100%;
+    --splash-bg-color: black;
+}
+.nav__toggle {
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: 0;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.15s linear;
+}
+.nav__toggle:hover, .nav__toggle:focus {
+    background-color: rgba(0, 0, 0, .5);
+}
+.nav__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: var(--screen-height);
+    position: absolute;
+    z-index: 8;
+    visibility: hidden;
+    width: 100%;
+}
+.nav__item {
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
+}
+.nav__item:nth-child(1) {
+    transform: translateY(-40px);
+}
+.nav__item:nth-child(2) {
+    transform: translateY(-80px);
+}
+.nav__item:nth-child(3) {
+    transform: translateY(-120px);
+}
+.nav__item:nth-child(4) {
+    transform: translateY(-160px);
+}
+.nav__item:nth-child(5) {
+    transform: translateY(-200px);
+}
+.nav__link {
+    color: white;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 1.25rem;
+    text-decoration: none;
+    padding: 1rem;
+}
+.nav__link:hover, .nav__link:focus {
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.menuicon {
+    display: block;
+    cursor: pointer;
+    color: white;
+    transform: rotate(0deg);
+    transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.menuicon__bar, .menuicon__circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+.menuicon__bar {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-in-out;
+}
+.menuicon__circle {
+    transition: stroke-dashoffset 0.3s linear 0.1s;
+    stroke-dashoffset: 144.513262038;
+    stroke-dasharray: 144.513262038;
+}
+.splash {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 1px;
+    height: 1px;
+    z-index: 7;
+}
+.splash::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--splash-bg-color);
+    width: 284vmax;
+    height: 284vmax;
+    top: -142vmax;
+    left: -142vmax;
+    transform: scale(0);
+    transform-origin: 50% 50%;
+    transition: transform 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    will-change: transform;
+}
+.nav:target > .splash::after, .nav--open > .splash::after {
+    transform: scale(1);
+}
+.nav:target .menuicon, .nav--open .menuicon {
+    color: white;
+    transform: rotate(180deg);
+}
+.nav:target .menuicon__circle, .nav--open .menuicon__circle {
+    stroke-dashoffset: 0;
+}
+.nav:target .menuicon__bar:nth-child(1), .nav--open .menuicon__bar:nth-child(1), .nav:target .menuicon__bar:nth-child(4), .nav--open .menuicon__bar:nth-child(4) {
+    opacity: 0;
+}
+.nav:target .menuicon__bar:nth-child(2), .nav--open .menuicon__bar:nth-child(2) {
+    transform: rotate(45deg);
+}
+.nav:target .menuicon__bar:nth-child(3), .nav--open .menuicon__bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+.nav:target .nav__menu, .nav--open .nav__menu {
+    visibility: visible;
+}
+.nav:target .nav__item, .nav--open .nav__item {
+    opacity: 1;
+    transform: translateY(0);
+}
+body {
+    background-color: #d7d7d7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.viewport {
+    width: var(--screen-width);
+    height: var(--screen-height);
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+.header {
+    height: 5rem;
+    background-color: var(--header-bg-color);
+}
+.main {
+    padding: 20px;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-auto-rows: 130px;
+    grid-gap: 20px;
+}
+.gallery__item {
+    height: 100%;
+    background-color: #d8d8d8;
+}
+.gallery__item:hover, .gallery__item:focus {
+    background-color: #a4a4a4;
+}
